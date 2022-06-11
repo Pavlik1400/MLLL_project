@@ -7,7 +7,7 @@ from dataclasses import dataclass
 import yaml
 from argparse import ArgumentParser
 from pprint import pprint
-from helpers import birthdays_to_digits
+from helpers import birthdays_to_digits, show_mnist_img
 
 
 @dataclass
@@ -54,6 +54,9 @@ def transform(dataset: datasets.MNIST, digit1: int, digit2: int) -> Tuple[np.nda
         np.ndarray:
     """
     data = dataset.data.numpy().astype(np.float64) / 255
+    # data = data - np.mean(data)
+    # data = dataset.data.numpy().astype(np.float64)
+    # data = (data - np.mean(data)) / np.std(data)
     targets = dataset.targets.numpy()
     mask = np.bitwise_or(targets == digit1, targets == digit2)
     data = data[mask]
@@ -70,16 +73,22 @@ if __name__ == '__main__':
         config = yaml.load(cnf_file, Loader=yaml.FullLoader)
     print("config: ")
     pprint(config)
-    b2, b1 = config["Pavlo_birth"], config["Volodymyr_birth"]
+    b2, b1 = config["PB"], config["VB"]
     dig1, dig2 = birthdays_to_digits(b1, b2)
     dataset = load(dig1, dig2)
 
+    print("Example of images:")
+    show_mnist_img(
+        dataset.train_data[0], target=f"target: {dig1 if dataset.train_targets[0] else dig2}")
+    show_mnist_img(
+        dataset.train_data[1], target=f"target: {dig1 if dataset.train_targets[1] else dig2}")
+
     print(f"Dataset with digits: {dig1}, {dig2}")
-    print(f"Size of train: {len(dataset.train_data)}, \
-            ratio: {len(dataset.train_targets == dig1) / len(dataset.train_targets == dig2)}")
-    print(f"Size of cv: {len(dataset.cv_data)}, \
-            ratio: {len(dataset.cv_targets == dig1) / len(dataset.cv_targets == dig2)}")
-    print(f"Size of test: {len(dataset.test_data)}, \
-            ratio: {len(dataset.test_targets == dig1) / len(dataset.test_targets == dig2)}")
+    print(f"Size of train: {len(dataset.train_data)}, "
+          f"ratio: {len(dataset.train_targets == dig1) / len(dataset.train_targets == dig2)}")
+    print(f"Size of cv: {len(dataset.cv_data)}, "
+          f"ratio: {len(dataset.cv_targets == dig1) / len(dataset.cv_targets == dig2)}")
+    print(f"Size of test: {len(dataset.test_data)}, "
+          f"ratio: {len(dataset.test_targets == dig1) / len(dataset.test_targets == dig2)}")
 
     # print(dataset)
