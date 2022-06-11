@@ -1,8 +1,16 @@
-Pavlo_birth: 30
-Volodymyr_birth: 28
+PB: 30
+VB: 28
 
 deep_model:
-  simple_linear:
-    batch_size: 32
-    shuffle: true
-    loader_num_workers: 4
+  # models configurations
+  chosen: "linear"
+  linear:
+    layers_sizes: [16, 16]
+    activation: "relu"
+  
+  optimizer: "adam"
+
+  # training realted parameters
+  batch_size: 32
+  loader_num_workers: 4
+  validate_each_epoch: 500

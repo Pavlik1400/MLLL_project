@@ -2,3 +2,4 @@
 .idea/
 data/
 playground
+*/__pycache__/
