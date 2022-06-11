@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import numpy as np
 import torchvision.datasets as datasets
 from sklearn.model_selection import train_test_split
@@ -40,7 +42,7 @@ def load(digit1: int, digit2: int) -> Dataset:
     return Dataset(train_data, train_targets, cv_data, cv_targets, test_data, test_targets)
 
 
-def transform(dataset: datasets.MNIST, digit1: int, digit2: int) -> np.ndarray:
+def transform(dataset: datasets.MNIST, digit1: int, digit2: int) -> Tuple[np.ndarray, np.ndarray]:
     """Given MNIST dataset, normalizes images to range 0:255 and leave only 2 digits
 
     Args:
