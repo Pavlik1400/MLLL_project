@@ -1,15 +1,9 @@
 from sklearn.linear_model import LogisticRegression
 from data_preparation import load
+from src.training import select_model
 
 if __name__ == '__main__':
-    data = load(8, 5)
-    regressor = LogisticRegression(solver='saga', max_iter=200)
-    regressor.fit(data.train_data, data.train_targets)
-
-    train_score = regressor.score(data.train_data, data.train_targets)
-    cv_score = regressor.score(data.cv_data, data.cv_targets)
-    test_score = regressor.score(data.test_data, data.test_targets)
-
-    print(f"Train score: {train_score}")
-    print(f"Cross-validation score: {cv_score}")
-    print(f"Test score: {test_score}")
+    digit1, digit2 = 8, 5
+    dataset = load(digit1, digit2)
+    parameters = {'solver': ['saga', 'lbfgs', 'liblinear', 'newton-cg', 'sag'], 'max_iter': [100]}
+    select_model(dataset, LogisticRegression, parameters)
