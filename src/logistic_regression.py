@@ -2,7 +2,7 @@ from sklearn.linear_model import LogisticRegression
 from data_preparation import load
 
 if __name__ == '__main__':
-    data = load(5, 8)
+    data = load(8, 5)
     regressor = LogisticRegression(solver='saga', max_iter=200)
     regressor.fit(data.train_data, data.train_targets)
 

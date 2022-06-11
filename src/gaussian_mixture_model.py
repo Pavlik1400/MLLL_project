@@ -4,7 +4,7 @@ from data_preparation import load
 from sklearn.decomposition import PCA
 
 if __name__ == '__main__':
-    data = load(5, 8)
+    data = load(8, 5)
 
     reducer = PCA(n_components=0.99)
     train_data = reducer.fit_transform(data.train_data)

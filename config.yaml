@@ -1,0 +1,8 @@
+Pavlo_birth: 30
+Volodymyr_birth: 28
+
+deep_model:
+  simple_linear:
+    batch_size: 32
+    shuffle: true
+    loader_num_workers: 4
