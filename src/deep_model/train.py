@@ -16,6 +16,10 @@ from pprint import pprint
 import numpy as np
 from vizualize import vizualize_history
 
+# seed = 41
+# torch.manual_seed(seed)
+# np.random.seed(seed)
+
 
 def train_one_epoch(model: torch.nn.Module,
                     optimizer: torch.optim.Optimizer,
@@ -99,7 +103,7 @@ def train_model(model: torch.nn.Module,
             vinputs, vlabels = vdata
             voutputs = model(vinputs)
             vloss = loss_fn(voutputs, vlabels)
-            running_vloss += vloss
+            running_vloss += vloss.item()
 
             # preds = voutputs.max(dim=1)[1].detach().numpy()
             preds = voutputs.max(dim=1)[1].numpy()
