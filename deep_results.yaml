@@ -1,0 +1,14 @@
+- activation: builtin_function_or_method
+  layers: &id001
+  - 16
+  - 16
+  optimizer_cnf:
+    lr: 0.005
+    name: type
+    weight_decay: 0.005
+- activation: builtin_function_or_method
+  layers: *id001
+  optimizer_cnf:
+    lr: 0.0005
+    name: type
+    weight_decay: 0.001

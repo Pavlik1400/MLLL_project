@@ -9,8 +9,5 @@ if __name__ == '__main__':
     parameters = {
         'kernel': ['sigmoid', 'rbf', 'poly'],
         'degree': [3, 4, 5],
-        # 'gamma': [0, 1, 2],
-        # 'max_iter': [300]
-
     }
     select_model(dataset, SVC, parameters)
