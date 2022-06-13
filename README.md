@@ -5,7 +5,7 @@
 - [Volodymyr Tsapiv](https://github.com/Tsapiv)
 
 ## Approaches:
-- Relatively simple neural network (Pavlo Hilei)
-- Support Vector Machine - SVM (Pavlo Hilei)
-- Gaussian mixture model - GMM (Volodymyr Tsapiv)
-- PLA (Volodymyr Tsapiv)
+- Artificial Neural Network (NN) [Hilei Pavlo]
+- K-nearest neighbors (KNN) [Volodymyr Tsapiv]
+- Support Vector Machine (SVM) [Hilei Pavlo]
+- Logistic Regression [Volodymyr Tsapiv]
