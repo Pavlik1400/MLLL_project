@@ -7,7 +7,7 @@ from dataclasses import dataclass
 import yaml
 from argparse import ArgumentParser
 from pprint import pprint
-from .helpers import birthdays_to_digits, show_mnist_img
+from helpers import birthdays_to_digits, show_mnist_img
 
 
 @dataclass

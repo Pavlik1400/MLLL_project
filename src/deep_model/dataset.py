@@ -1,12 +1,12 @@
 import os
 import sys
+
 sys.path.append(os.getcwd())
-from typing import Optional, Tuple
+from typing import Optional
 import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-from src.data_preparation import load as load_mnist
 from src.data_preparation import Dataset as MNIST_RawDs
 
 

@@ -24,7 +24,7 @@ def select_model(dataset: Dataset, model_prototype, parameters: Dict):
     best = np.argmax(scores)
     best_model = models[best]
 
-    score = best_model.score(dataset.train_data, dataset.train_targets)
+    score = best_model.score(dataset.test_data, dataset.test_targets)
     print(f"Test accuracy={score:.2f}, parameters={parameters_set[best]}")
 
     return best_model

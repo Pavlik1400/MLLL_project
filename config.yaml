@@ -4,13 +4,19 @@ VB: 28
 deep_model:
   # models configurations
   chosen: "linear"
+  device: "cuda"
   linear:
     layers_sizes: [16, 16]
+    # layers_sizes: [64, 64, 32, 32]
     activation: "relu"
   
-  optimizer: "adam"
+  # optimizer:
+  #   name: "adam"
+  #   lr: 0.0001
+  #   weight_decay: 0.01
 
   # training realted parameters
   batch_size: 32
   loader_num_workers: 4
-  validate_each_epoch: 500
+  print_each: 30
+  n_epoch: 2
